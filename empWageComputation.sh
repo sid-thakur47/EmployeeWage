@@ -1,5 +1,5 @@
-rand=$(($RANDOM%2+1))
-if [ $rand -eq 1 ]
+random=$(($RANDOM%2+1))
+if [ $random -eq 1 ]
 	then 
 		echo "Employee is Present"
 	else
