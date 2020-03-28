@@ -1,7 +1,10 @@
-random=$(($RANDOM%2+1))
+random=$(($RANDOM%2))
 if [ $random -eq 1 ]
 	then 
-		echo "Employee is Present"
+		empRatePerHour=20
+		empHours=8
+		sal=$(($empRatePerHour * $empHours))
+		echo "Salary is:$sal"
 	else
-		echo "Employee is Absent"
+		echo "Employee does not work"
 fi
