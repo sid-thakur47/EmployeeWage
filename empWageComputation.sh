@@ -1,15 +1,18 @@
 #!/bin/bash -x
 
 empRatePerHour=20
-random=$(($RANDOM%3))
-if [ $random -eq 1 ]
-	then
-		empHours=4
-	elif [ $random -eq 2 ]
-	then
-		empHours=8
-	else
-		empHours=0
-		fi
-sal=$(($empRatePerHour * $empHours))
+empRandomCheck=$(($RANDOM%3))
+
+case $empRandomCheck in
+			1)
+				empHours=4
+				;;
+			2)
+				empHours=8
+				;;
+			*)
+				empHours=0
+				;;
+esac
+sal=$(($empRatePerHour * $empHours)) 
 echo $sal
