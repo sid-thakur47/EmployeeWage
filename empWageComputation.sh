@@ -1,22 +1,26 @@
 #!/bin/bash -x
-EMPLOYEE_RATE_PER_HOUR=20
-WORKING_DAYS_PER_MONTH=20
+NUM_WORKING_DAYS=20
+EMP_RATE_PER_HOUR=20
+MAX_HR_IN_MONTH=10
 
-for (( day=1; day<=$WORKING_DAYS_PER_MONTH; day++ ))
-do
-	randomCheck=$((RANDOM%3))
-	case $randomCheck in
-		1)
-			empHours=4
-			;;
-		2)
-			empHours=8
-			;;
-		*)
-			empHours=0
-			;;
-	esac
-	salary=$(($empHours * $EMPLOYEE_RATE_PER_HOUR))
-	totalSalary=$(($totalSalary + $salary))
+totalEmpHr=0
+totalWorkingDays=0
+while [[ $totalEmpHr -lt $MAX_HR_IN_MONTH && $totalWorkingDays -lt $NUM_WORKING_DAYS ]]
+ do
+	((totalWorkingDays++))
+	 empRandomCheck=$(($RANDOM%3))
+		case $empRandomCheck in
+				1)
+					empHours=4
+					;;
+				2)
+					empHours=8
+					;;
+				*)
+					empHours=0
+					;;
+		esac
+totalEmpHr=$(($totalEmpHr+$empHours))
 done
-echo $salary $totalSalary
+totalSalary=$(($totalEmpHr * $EMP_RATE_PER_HOUR))
+echo $totalEmpHr $totalSalary
