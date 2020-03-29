@@ -1,5 +1,6 @@
 #!/bin/bash -x
 declare -a empDailyWage
+declare -A empDailyWage
 NUM_WORKING_DAYS=20
 EMP_RATE_PER_HOUR=20
 MAX_HR_IN_MONTH=4
@@ -32,10 +33,11 @@ while [[ $totalWorkHours -lt $MAX_HR_IN_MONTH && $totalWorkingDays -lt $NUM_WORK
 	rand=$(($RANDOM%3))
 	workHours="$( getWorkingHours $rand  )"
 	totalWorkingHours=$(($totalWorkingHours + $workHours))
-	#empDailyWage[totalWorkingDays]="(( getEmpDailyWage $workHours))"
 	empDailyWage[$totalWorkingDays]="$(getEmpDailyWage)"
 done
 totalSalary=$(($totalWorkingHours * $EMP_RATE_PER_HOUR))
-echo $totalWorkingHours $totalSalary
+echo "Total Working Hours"$totalWorkingHours
+echo "Total Salary:"$totalSalary
+echo "Day:"${!empDailyWage[*]}
 echo "Daily Wage:"${empDailyWage[*]}
 
