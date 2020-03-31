@@ -20,7 +20,7 @@ function getWorkingHours() {
 			$FULL_TIME)
 				workHours=8
 				;;
-					*)
+			*)
 				workHours=0
 				;;
 		esac
